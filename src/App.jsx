@@ -1,33 +1,30 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useNavigate, BrowserRouter, Routes, Route } from 'react-router-dom'
+import Dashboard from './pages/Dashboard'
+import CreateTask from './pages/CreateTask'
+import MyTask from './pages/MyTask'
+import { Settings } from 'lucide-react'
+import TaskCategories from './pages/TaskCategories'
+import VitalTask from './pages/VitalTask'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <BrowserRouter>
+        <div className='App'>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/my-task" element={<MyTask />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/task-categories" element={<TaskCategories />} />
+            <Route path="/vital-task" element={<VitalTask />} />
+            <Route path="/create-task" element={<CreateTask />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </>
   )
 }
